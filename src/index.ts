@@ -57,7 +57,12 @@ class Calculator {
                     }
                     this.computeString += text
                 } else if (text === '='){
-                    this.endCompute = eval(this.computeString)
+                    try {
+                        this.endCompute = eval(this.computeString)
+                    } catch (err) {
+                        this.endCompute = 0
+                        this.computeString = ''
+                    }
                     let pointNum = this.endCompute.toString().split('.')
                     if (pointNum[1] && pointNum[1].length>6) {
                         this.endCompute = parseFloat(this.endCompute.toFixed(7))
