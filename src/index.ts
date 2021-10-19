@@ -49,6 +49,11 @@ class Calculator {
                     } else if (text === '÷') {
                         text = '/'
                     }
+                    if (this.computeString) {
+                        console.log('computeString', this.computeString)
+                        this.endCompute = eval(this.computeString)
+                        this.setEnd()
+                    }
                     this.computeString += text
                 } else if (text === '='){
                     try {
@@ -57,12 +62,7 @@ class Calculator {
                         this.endCompute = 0
                         this.computeString = ''
                     }
-                    let pointNum = this.endCompute.toString().split('.')
-                    if (pointNum[1] && pointNum[1].length>6) {
-                        this.endCompute = parseFloat(this.endCompute.toFixed(7))
-                    }
-                    this.computeString = this.endCompute + ''
-                    this.setOutput()
+                    this.setEnd()
                 } else if (text === 'Clear') {
                     this.endCompute = 0
                     this.computeString = ''
@@ -74,6 +74,14 @@ class Calculator {
     setOutput() {
         let span = document.querySelector('.shell .output span')
         span.textContent = this.endCompute + ''
+    }
+    setEnd() {
+        let pointNum = this.endCompute.toString().split('.')
+        if (pointNum[1] && pointNum[1].length>6) {
+            this.endCompute = parseFloat(this.endCompute.toFixed(7))
+        }
+        this.computeString = this.endCompute + ''
+        this.setOutput()
     }
 }
 new Calculator()
