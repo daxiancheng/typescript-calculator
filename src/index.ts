@@ -17,14 +17,8 @@ class Calculator {
         this.bindEvent()
     }
     creatElement(tagName:string | HTMLElement,container:HTMLElement,className?:string,text?:string) {
-        let tag: HTMLElement
-        if ( typeof tagName === 'string') {
-            tag = document.createElement(tagName)
-        } else {
-            tag = tagName
-        }
+        let tag: HTMLElement = typeof tagName === 'string' ? document.createElement(tagName) : tagName
         className && (tag.className = className)
-        
         if (text) {
             let span = document.createElement('span')
             span.textContent = text
