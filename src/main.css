@@ -1,0 +1,30 @@
+.shell {
+    display: inline-block;
+    transform: translateX(240%);
+}
+.shell .output {
+    height: 8em;
+    border: 1px solid grey;
+    position: relative;
+    overflow: hidden;
+}
+.shell .output span{
+    font-size: 48px;
+    position: absolute;
+    right: 4px;
+    bottom: 4px;
+}
+.shell .button > button{
+    width: 6em;
+    height: 6em;
+    vertical-align:middle;
+}
+.shell .button > button span{
+    font-size: 24px;
+}
+.shell .button > .button-Clear{
+    width: 18em;
+}
+.shell .button > .button-0{
+    width: 12em;
+}
